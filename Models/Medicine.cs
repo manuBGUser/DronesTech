@@ -16,5 +16,7 @@ namespace DronesTech.Models
         public string Code { get; set; }
         [Required]
         public string Image { get; set; }
+
+        public Drone drone { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace ApiRest.Models
             
         }
 
-        public DbSet<Drone> Projects { get; set; }
-        public DbSet<Medicine> Bugs { get; set; }
+        public DbSet<Drone> Drones { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
     }
 }

@@ -19,5 +19,7 @@ namespace DronesTech.Models
         public int BatteryCapacity { get; set; }
         [Required]
         public StatusType Status { get; set; }
+
+        public ICollection<Medicine> Medicines { get; set; }
     }
 }
