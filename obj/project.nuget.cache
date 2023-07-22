@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "P9N4CdPScdobL+lr602TtFcEPqYEUUJ1f3pSmSKXoarNEacpuCE5cMzyLDhQfkPOVGT/Ok+kXJr92fZLfcVKXg==",
+  "dgSpecHash": "+0pcOKjS6+kO6tPCCuyDHwFafag3E7nnzuMgsDtU1V+kN4c90Rvpt72u6YkE++0voAuM6JxIwfe0WV8KA72+6A==",
   "success": true,
   "projectFilePath": "D:\\Proyectos\\ApiWeb\\ApiRest\\DronesTech\\DronesTech\\DronesTech.csproj",
   "expectedPackageFiles": [
@@ -18,6 +18,7 @@
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.9\\microsoft.entityframeworkcore.design.7.0.9.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.9\\microsoft.entityframeworkcore.relational.7.0.9.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.9\\microsoft.entityframeworkcore.sqlserver.7.0.9.nupkg.sha512",
+    "C:\\Users\\Alex\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.9\\microsoft.entityframeworkcore.tools.7.0.9.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",

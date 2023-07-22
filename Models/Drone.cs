@@ -1,5 +1,7 @@
 ﻿using DronesTech.Models.Types;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DronesTech.Models
 {
@@ -13,6 +15,7 @@ namespace DronesTech.Models
         public ModelType Model { get; set; }
         [Required]
         [Range(0,500)]
+        [Column(TypeName = "decimal(3,2)")]
         public Decimal WeightLimit { get; set; }
         [Required]
         [Range(0, 100)]
