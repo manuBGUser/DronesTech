@@ -18,7 +18,7 @@ using System.Text.Json.Serialization;
 namespace DronesTech.Controllers
 {
     [ApiController]
-    [Route("api/droneController")]
+    [Route("api/DroneController")]
     public class DroneController : Controller
     {
         private readonly IDroneRepository _droneRepository;
@@ -32,7 +32,7 @@ namespace DronesTech.Controllers
             this._medicineRepository = medicineRepository;
         }
 
-        [HttpGet]
+        [HttpGet("/getDrones")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Drone>))]
         public IActionResult GetDrones()
         {
@@ -40,7 +40,9 @@ namespace DronesTech.Controllers
             if(!ModelState.IsValid)
                 return BadRequest(new JsonResult("The drone isn't valid"));
 
-            return Ok(new JsonResult(drones));
+            JsonResult result = new JsonResult(drones);
+            result.StatusCode = 200;
+            return Ok(result);
         }
 
         [HttpGet("/getAbleDrones")]
@@ -51,11 +53,13 @@ namespace DronesTech.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(new JsonResult("The drone isn't valid"));
 
-            return Ok(new JsonResult(drones));
+            JsonResult result = new JsonResult(drones);
+            result.StatusCode = 200;
+            return Ok(result);
         }
 
         // POST: DroneController/Create
-        [HttpPost]
+        [HttpPost("/createDrone")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public ActionResult CreateDrone([FromBody] DroneDTO droneDTO)
@@ -80,7 +84,9 @@ namespace DronesTech.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new JsonResult("Something went wrong while saving"));
             }
 
-            return Ok(new JsonResult(drone));
+            JsonResult result = new JsonResult(drone);
+            result.StatusCode = 200;
+            return Ok(result);
         }
 
         [HttpGet("getDroneBattery/{droneId}")]
@@ -95,10 +101,13 @@ namespace DronesTech.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(new JsonResult("The drone isn't valid"));
 
-            return Ok(new JsonResult(drone.BatteryCapacity));
+            decimal medsWeight = drone.Medicines.Sum(m => m.Weight);
+            JsonResult result = new JsonResult(drone.BatteryCapacity);
+            result.StatusCode = 200;
+            return Ok(result);
         }
 
-        [HttpGet("chargeMedicine/{droneId}")]
+        [HttpPost("chargeMedicine/{droneId}")]
         [ProducesResponseType(200, Type = typeof(Drone))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -118,7 +127,10 @@ namespace DronesTech.Controllers
             ICollection<Medicine> list = _medicineRepository.GetMedicinesToCharge(drone.WeightLimit);
             drone = _droneRepository.ChargeMedicines(drone, list);
 
-            return Ok(new JsonResult(drone));
+            decimal medsWeight = drone.Medicines.Sum(m => m.Weight);
+            JsonResult result = new JsonResult(drone);
+            result.StatusCode = 200;
+            return Ok(result);
         }
 
         [HttpGet("checkChargedMedsWeight/{droneId}")]
@@ -137,8 +149,9 @@ namespace DronesTech.Controllers
                 return BadRequest(new JsonResult("The drone isn't charged"));
 
             decimal medsWeight = drone.Medicines.Sum(m => m.Weight);
-
-            return Ok(new JsonResult(drone));
+            JsonResult result = new JsonResult(drone);
+            result.StatusCode = 200;
+            return Ok(result);
         }
     }
 }

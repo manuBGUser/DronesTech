@@ -11,7 +11,7 @@ using System.Text;
 namespace DronesTech.Controllers
 {
     [ApiController]
-    [Route("api/medicineController")]
+    [Route("api/MedicineController")]
     public class MedicineController : Controller
     {
         private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace DronesTech.Controllers
         }
 
         // POST: MedicineController/Create
-        [HttpPost]
+        [HttpPost("/createMedicine")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public ActionResult CreateMedicine([FromBody] MedicineDTO medicineDTO)
@@ -49,7 +49,9 @@ namespace DronesTech.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new JsonResult("Something went wrong while saving"));
             }
 
-            return Ok(new JsonResult(medicine));
+            JsonResult result = new JsonResult(medicine);
+            result.StatusCode = 200;
+            return Ok(result);
         }
 
     }
