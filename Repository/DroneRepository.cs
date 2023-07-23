@@ -45,5 +45,18 @@ namespace DronesTech.Repository
         {
             return _context.Drones.Find(id).BatteryCapacity;
         }
+
+        public bool IsDroneEmpty(int id)
+        {
+            var drone = GetDroneById(id);
+            return drone != null && drone.Medicines.Count == 0 ? true : false;
+        }
+
+        public Drone ChargeMedicines(Drone drone, ICollection<Medicine> medicines)
+        {
+            drone.Medicines = medicines;
+            _context.SaveChanges();
+            return drone;
+        }
     }
 }
