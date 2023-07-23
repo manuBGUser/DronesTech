@@ -60,5 +60,10 @@ namespace DronesTech.Repository
             _context.SaveChanges();
             return drone;
         }
+
+        public Drone GetDroneBySerieNumber(string serieNumber)
+        {
+            return _context.Drones.Where(d => d.SerieNumber == serieNumber).FirstOrDefault();
+        }
     }
 }

@@ -67,8 +67,7 @@ namespace DronesTech.Controllers
             if (droneDTO == null)
                 return BadRequest(new JsonResult("There is not incoming data"));
 
-            var drone = _droneRepository.GetDrones()
-                .Where(d => d.SerieNumber == droneDTO.SerieNumber).FirstOrDefault();
+            var drone = _droneRepository.GetDroneBySerieNumber(droneDTO.SerieNumber);
 
             if (drone != null)
             {

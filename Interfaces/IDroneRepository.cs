@@ -9,6 +9,7 @@ namespace DronesTech.Interfaces
         bool CreateDrone(Drone drone);
         bool DroneExists(int id);
         Drone GetDroneById(int id);
+        Drone GetDroneBySerieNumber(string serieNumber);
         int GetDroneBattery(int id);
         bool IsDroneEmpty(int id);
         Drone ChargeMedicines(Drone drone, ICollection<Medicine> medicines);
