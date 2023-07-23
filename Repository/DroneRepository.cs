@@ -2,6 +2,7 @@
 using DronesTech.Interfaces;
 using DronesTech.Models;
 using DronesTech.Models.Types;
+using Microsoft.EntityFrameworkCore;
 
 namespace DronesTech.Repository
 {
@@ -18,9 +19,9 @@ namespace DronesTech.Repository
             return _context.Drones.ToList();
         }
 
-        public ICollection<Drone> GetAbleDrones()
+        public ICollection<Drone> GetAbledDrones()
         {
-            return _context.Drones.Where(d => d.BatteryCapacity >= 25 && (d.Status == StatusType.Inactive || d.Status == StatusType.Charged)).ToList();
+            return _context.Drones.Where(d => d.BatteryCapacity >= 25 && (d.Status == StatusType.Inactive)).ToList();
         }
 
         public bool CreateDrone(Drone drone)
@@ -38,7 +39,7 @@ namespace DronesTech.Repository
 
         public Drone GetDroneById(int id)
         {
-            return _context.Drones.Where(d => d.Id == id).FirstOrDefault();
+            return _context.Drones.Where(d => d.Id == id).Include(m => m.Medicines).FirstOrDefault();
         }
 
         public int GetDroneBattery(int id)
@@ -49,12 +50,13 @@ namespace DronesTech.Repository
         public bool IsDroneEmpty(int id)
         {
             var drone = GetDroneById(id);
-            return drone != null && drone.Medicines.Count == 0 ? true : false;
+            return drone != null && (drone.Medicines == null || drone.Medicines.Count == 0) ? true : false;
         }
 
         public Drone ChargeMedicines(Drone drone, ICollection<Medicine> medicines)
         {
             drone.Medicines = medicines;
+            drone.Status = StatusType.Charged;
             _context.SaveChanges();
             return drone;
         }

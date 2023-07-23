@@ -77,3 +77,6 @@ D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\obj\Debug\net7.0\ref\DronesTec
 D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\bin\Debug\net7.0\AutoMapper.dll
 D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

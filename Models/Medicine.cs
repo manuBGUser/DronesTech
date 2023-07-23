@@ -9,7 +9,7 @@ namespace DronesTech.Models
     {
         public int Id { get; set; }
         [Required]
-        [RegularExpression("^[a-zA-Z0-9_-]*$", ErrorMessage = "The name must contain only letters, numbers, dash and underscore.@@")]
+        [RegularExpression("^[a-zA-Z0-9_-]*$", ErrorMessage = "The name must contain only letters, numbers, dash and underscore.")]
         public string Name { get; set; }
         [Required]
         [Column(TypeName = "decimal(3,2)")]
@@ -19,6 +19,7 @@ namespace DronesTech.Models
         public string Code { get; set; }
         [Required]
         public string Image { get; set; }
-        public Drone Drone { get; set; }
+        public ICollection<Drone> Drones { get; set; }
+
     }
 }
