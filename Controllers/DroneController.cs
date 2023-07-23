@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace DronesTech.Controllers
 {
     [ApiController]
-    [Route("[api/controller]")]
+    [Route("api/controller")]
     public class DroneController : Controller
     {
         private readonly IDroneRepository _droneRepository;
@@ -27,12 +27,24 @@ namespace DronesTech.Controllers
         [ProducesResponseType(200, Type = typeof(IEnumerable<Drone>))]
         public IActionResult GetDrones()
         {
-            var drones = _droneRepository.GetDrones();
+            var drones = _mapper.Map<List<DroneDTO>>(_droneRepository.GetDrones());
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             return Ok(drones);
-        } 
+        }
+
+        // POST: DroneController/Create
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Drone>))]
+        public IActionResult GetAbleDrones()
+        {
+            var drones = _mapper.Map<List<DroneDTO>>(_droneRepository.GetAbleDrones());
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(drones);
+        }
 
         // POST: DroneController/Create
         [HttpPost]

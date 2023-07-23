@@ -1,6 +1,7 @@
 ﻿using DronesTech.Context;
 using DronesTech.Interfaces;
 using DronesTech.Models;
+using DronesTech.Models.Types;
 
 namespace DronesTech.Repository
 {
@@ -15,6 +16,11 @@ namespace DronesTech.Repository
         public ICollection<Drone> GetDrones()
         {
             return _context.Drones.ToList();
+        }
+
+        public ICollection<Drone> GetAbleDrones()
+        {
+            return _context.Drones.Where(d => d.BatteryCapacity >= 25 && (d.Status == StatusType.Inactive || d.Status == StatusType.Charged)).ToList();
         }
 
         public bool CreateDrone(Drone drone)

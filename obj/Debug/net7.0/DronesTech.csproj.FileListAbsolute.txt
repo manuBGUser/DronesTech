@@ -74,3 +74,6 @@ D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\obj\Debug\net7.0\refint\Drones
 D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\obj\Debug\net7.0\DronesTech.pdb
 D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\obj\Debug\net7.0\DronesTech.genruntimeconfig.cache
 D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\obj\Debug\net7.0\ref\DronesTech.dll
+D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\bin\Debug\net7.0\AutoMapper.dll
+D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Proyectos\ApiWeb\ApiRest\DronesTech\DronesTech\bin\Debug\net7.0\Newtonsoft.Json.dll
