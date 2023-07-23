@@ -10,6 +10,8 @@ namespace DronesTech.Helpers
         {
             CreateMap<Drone, DroneDTO>();
             CreateMap<DroneDTO, Drone>();
+            CreateMap<Medicine, MedicineDTO>();
+            CreateMap<MedicineDTO, Medicine>();
         }
     }
 }

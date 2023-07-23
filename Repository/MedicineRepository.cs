@@ -2,6 +2,7 @@
 using DronesTech.Interfaces;
 using DronesTech.Models;
 using DronesTech.Models.Types;
+using System.Text;
 
 namespace DronesTech.Repository
 {
@@ -11,6 +12,13 @@ namespace DronesTech.Repository
         public MedicineRepository(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public bool CreateMedicine(Medicine medicine)
+        {
+            _context.Add(medicine);
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
         }
 
         public ICollection<Medicine> GetMedicines()

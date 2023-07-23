@@ -22,36 +22,36 @@ namespace DronesTech.Controllers
             this._medicineRepository = medicineRepository;
         }
 
-        //// POST: DroneController/Create
-        //[HttpPost]
-        //[ProducesResponseType(204)]
-        //[ProducesResponseType(400)]
-        //public ActionResult CreateDrone([FromBody] DroneDTO droneDTO)
-        //{
-        //    if (droneDTO == null)
-        //        return BadRequest(ModelState);
+        // POST: DroneController/Create
+        [HttpPost]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        public ActionResult CreateMedicine([FromBody] MedicineDTO medicineDTO)
+        {
+            if (medicineDTO == null)
+                return BadRequest(ModelState);
 
-        //    var drone = _droneRepository.GetDrones()
-        //        .Where(d => d.SerieNumber == droneDTO.SerieNumber).FirstOrDefault();
+            var medicine = _medicineRepository.GetMedicines()
+                .Where(m => m.Code == medicineDTO.Code).FirstOrDefault();
 
-        //    if (drone != null)
-        //    {
-        //        ModelState.AddModelError("", "Category already exits");
-        //        return StatusCode(422, ModelState);
-        //    }
+            if (medicine != null)
+            {
+                ModelState.AddModelError("", "medicine already exits");
+                return StatusCode(422, ModelState);
+            }
 
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-        //    var droneMap = _mapper.Map<Drone>(droneDTO);
-        //    if (!_droneRepository.CreateDrone(droneMap))
-        //    {
-        //        ModelState.AddModelError("", "Something went wrong while saving");
-        //        return StatusCode(500, ModelState);
-        //    }
+            var medicineMap = _mapper.Map<Medicine>(medicineDTO);
+            if (!_medicineRepository.CreateMedicine(medicineMap))
+            {
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
 
-        //    return Ok(drone);
-        //}
+            return Ok(medicine);
+        }
 
     }
 }

@@ -60,7 +60,7 @@ namespace DronesTech.Controllers
 
             if (drone != null)
             {
-                ModelState.AddModelError("", "Category already exits");
+                ModelState.AddModelError("", "Drone already exits");
                 return StatusCode(422, ModelState);
             }
 

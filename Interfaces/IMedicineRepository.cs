@@ -6,5 +6,6 @@ namespace DronesTech.Interfaces
     {
         ICollection<Medicine> GetMedicines();
         ICollection<Medicine> GetMedicinesToCharge(decimal weightLimit);
+        bool CreateMedicine(Medicine medicine);
     }
 }
