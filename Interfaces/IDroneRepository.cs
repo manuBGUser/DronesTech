@@ -5,5 +5,7 @@ namespace DronesTech.Interfaces
     public interface IDroneRepository
     {
         ICollection<Drone> GetDrones();
+        bool CreateDrone(Drone drone);
+
     }
 }

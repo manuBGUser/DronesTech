@@ -1,4 +1,5 @@
-﻿using DronesTech.DTO;
+﻿using AutoMapper;
+using DronesTech.DTO;
 using DronesTech.Interfaces;
 using DronesTech.Models;
 using Microsoft.AspNetCore.Http;
@@ -13,10 +14,12 @@ namespace DronesTech.Controllers
     public class DroneController : Controller
     {
         private readonly IDroneRepository _droneRepository;
+        private readonly IMapper _mapper;
 
-        public DroneController(IDroneRepository droneRepository)
+        public DroneController(IDroneRepository droneRepository, IMapper mapper)
         {
             this._droneRepository = droneRepository;
+            this._mapper = mapper;
         }
 
         // POST: DroneController/Create
@@ -37,73 +40,32 @@ namespace DronesTech.Controllers
         [ProducesResponseType(400)]
         public ActionResult CreateDrone([FromBody] DroneDTO droneDTO)
         {
-            try
+            if(droneDTO == null)
+                return BadRequest(ModelState);
+
+            var drone = _droneRepository.GetDrones()
+                .Where(d => d.SerieNumber == droneDTO.SerieNumber).FirstOrDefault();
+
+            if(drone != null)
             {
-                //var data = JsonConvert.DeserializeObject<DroneDTO>(droneDTO.ToString());
-
-                //Guid user = new Guid(data.user.ToString());
-                //int project = int.Parse(data.project.ToString());
-                //string description = data.description.ToString();
-
-                //Bug bug = new Bug()
-                //{
-                //    ProjectId = project,
-                //    User = _context.Users.Find(data.user.ToString()),
-                //    Description = description,
-                //    CreationDate = DateTime.Now,
-                //};
-
-                //_context.Add(bug);
-                //_context.SaveChangesAsync();
-
-                //return Json
+                ModelState.AddModelError("", "Category already exits");
+                return StatusCode(422, ModelState);
             }
-            catch
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var droneMap = _mapper.Map<Drone> (droneDTO);
+            if(!_droneRepository.CreateDrone(droneMap))
             {
-                return View();
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
             }
+
+            return Ok(drone);
         }
 
-        // GET: DroneController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: DroneController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: DroneController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: DroneController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

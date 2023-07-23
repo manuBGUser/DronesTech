@@ -16,5 +16,12 @@ namespace DronesTech.Repository
         {
             return _context.Drones.ToList();
         }
+
+        public bool CreateDrone(Drone drone)
+        {
+            _context.Add(drone);
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
+        }
     }
 }
