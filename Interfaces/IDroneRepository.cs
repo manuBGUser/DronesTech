@@ -7,8 +7,9 @@ namespace DronesTech.Interfaces
         ICollection<Drone> GetDrones();
         ICollection<Drone> GetAbleDrones();
         bool CreateDrone(Drone drone);
-
-        int DroneBatery(Guid id);
+        bool DroneExists(int id);
+        Drone GetDroneById(int id);
+        int GetDroneBatery(int id);
 
     }
 }

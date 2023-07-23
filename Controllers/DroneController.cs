@@ -77,7 +77,20 @@ namespace DronesTech.Controllers
             return Ok(drone);
         }
 
+        // POST: DroneController/Create
+        [HttpGet("{droneId}")]
+        [ProducesResponseType(200, Type = typeof(int))]
+        [ProducesResponseType(400)]
+        public IActionResult GetDroneBatery(int droneId)
+        {
+            if(!_droneRepository.DroneExists(droneId))
+                return BadRequest(ModelState);
+             var drone = _droneRepository.GetDroneById(droneId);
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
 
+            return Ok(drone.BatteryCapacity);
+        }
 
     }
 }
