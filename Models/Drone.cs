@@ -14,8 +14,8 @@ namespace DronesTech.Models
         [Required]
         public ModelType Model { get; set; }
         [Required]
-        //[Range(0,500)]
-        [Column(TypeName = "decimal(3,2)")]
+        [Range(0.00, 500.00)]
+        [Column(TypeName = "decimal(5,2)")]
         public Decimal WeightLimit { get; set; }
         [Required]
         [Range(0, 100)]

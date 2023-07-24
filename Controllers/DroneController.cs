@@ -45,9 +45,9 @@ namespace DronesTech.Controllers
             return Ok(result);
         }
 
-        [HttpGet("/getAbleDrones")]
+        [HttpGet("/getAbledDrones")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Drone>))]
-        public IActionResult GetAbleDrones()
+        public IActionResult GetAbledDrones()
         {
             var drones = _mapper.Map<List<DroneDTO>>(_droneRepository.GetAbledDrones());
             if (!ModelState.IsValid)
@@ -83,7 +83,7 @@ namespace DronesTech.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new JsonResult("Something went wrong while saving"));
             }
 
-            JsonResult result = new JsonResult(drone);
+            JsonResult result = new JsonResult(droneMap);
             result.StatusCode = 200;
             return Ok(result);
         }
@@ -100,7 +100,6 @@ namespace DronesTech.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(new JsonResult("The drone isn't valid"));
 
-            decimal medsWeight = drone.Medicines.Sum(m => m.Weight);
             JsonResult result = new JsonResult(drone.BatteryCapacity);
             result.StatusCode = 200;
             return Ok(result);

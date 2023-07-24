@@ -49,7 +49,7 @@ namespace DronesTech.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new JsonResult("Something went wrong while saving"));
             }
 
-            JsonResult result = new JsonResult(medicine);
+            JsonResult result = new JsonResult(medicineMap);
             result.StatusCode = 200;
             return Ok(result);
         }
