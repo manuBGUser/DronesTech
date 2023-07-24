@@ -26,6 +26,11 @@ namespace DronesTech.Repository
             return _context.Medicines.ToList();
         }
 
+        public ICollection<Medicine> GetMedicinesByIds(List<int> ids)
+        {
+            return _context.Medicines.Where(m => ids.Contains(m.Id)).ToList();
+        }
+
         public ICollection<Medicine> GetMedicinesToCharge(decimal weightLimit)
         {
             var lowerThan = _context.Medicines.Where(m => m.Weight <= weightLimit).ToList();

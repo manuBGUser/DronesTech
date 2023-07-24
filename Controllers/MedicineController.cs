@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DronesTech.Controllers
 {
@@ -24,7 +25,7 @@ namespace DronesTech.Controllers
         }
 
         // POST: MedicineController/Create
-        [HttpPost("/createMedicine")]
+        [HttpPost("createMedicine")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public ActionResult CreateMedicine([FromBody] MedicineDTO medicineDTO)
@@ -40,6 +41,10 @@ namespace DronesTech.Controllers
                 return UnprocessableEntity(new JsonResult("Medicine already exits"));
             }
 
+            if (!Regex.IsMatch(medicineDTO.Name, @"^[a-zA-Z0-9_-]+$"))
+                return BadRequest(new JsonResult("The drone name can only have letters, number, dashes and underscores"));
+            if (!Regex.IsMatch(medicineDTO.Name, @"^[A-Z0-9_]+$"))
+                return BadRequest(new JsonResult("The drone name can only have capital letters, number and dashes"));
             if (!ModelState.IsValid)
                 return BadRequest(new JsonResult("The drone isn't valid"));
 
