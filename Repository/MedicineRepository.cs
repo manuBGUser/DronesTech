@@ -44,5 +44,10 @@ namespace DronesTech.Repository
             }
             return medicines;
         }
+
+        public decimal GetMedicinesWeights(ICollection<Medicine> medicines)
+        {
+            return medicines.Sum(m => m.Weight);
+        }
     }
 }

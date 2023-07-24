@@ -65,5 +65,10 @@ namespace DronesTech.Repository
         {
             return _context.Drones.Where(d => d.SerieNumber == serieNumber).FirstOrDefault();
         }
+
+        public bool IsDroneAbled(int id)
+        {
+            return GetAbledDrones().Any(d => d.Id == id);
+        }
     }
 }

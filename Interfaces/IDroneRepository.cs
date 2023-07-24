@@ -12,6 +12,7 @@ namespace DronesTech.Interfaces
         Drone GetDroneBySerieNumber(string serieNumber);
         int GetDroneBattery(int id);
         bool IsDroneEmpty(int id);
+        bool IsDroneAbled(int id);
         Drone ChargeMedicines(Drone drone, ICollection<Medicine> medicines);
     }
 }

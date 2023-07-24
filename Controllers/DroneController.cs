@@ -105,12 +105,15 @@ namespace DronesTech.Controllers
             return Ok(result);
         }
 
-        [HttpPost("chargeMedicine/{droneId}")]
+        [HttpPost("chargeMedicine")]
         [ProducesResponseType(200, Type = typeof(Drone))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public IActionResult ChargeMedicineToDrone(int droneId)
+        public IActionResult ChargeMedicineToDrone([FromBody] Object optData)
         {
+            var data = JsonConvert.DeserializeObject<dynamic>(optData.ToString());
+            int droneId = data.droneId;
+
             if (!_droneRepository.DroneExists(droneId))
                 return NotFound(new JsonResult("The drone doesn't exist"));
             if (!_droneRepository.IsDroneEmpty(droneId))
@@ -119,7 +122,7 @@ namespace DronesTech.Controllers
             var drone = _droneRepository.GetDroneById(droneId);
             if (!ModelState.IsValid)
                 return BadRequest(new JsonResult("The drone isn't valid"));
-            if (!_droneRepository.GetAbledDrones().Contains(drone)) // the drone isnt able to charge
+            if (!_droneRepository.IsDroneAbled(droneId)) // the drone isnt able to charge
                 return BadRequest(new JsonResult("The drone isn't abled to charge"));
 
             ICollection<Medicine> list = _medicineRepository.GetMedicinesToCharge(drone.WeightLimit);
@@ -149,13 +152,16 @@ namespace DronesTech.Controllers
             var drone = _droneRepository.GetDroneById(droneId);
             if (!ModelState.IsValid)
                 return BadRequest(new JsonResult("The drone isn't valid"));
-            if (!_droneRepository.GetAbledDrones().Contains(drone)) // the drone isnt able to charge
+            if (!_droneRepository.IsDroneAbled(droneId)) // the drone isnt able to charge
                 return BadRequest(new JsonResult("The drone isn't abled to charge"));
 
             ICollection<Medicine> list = _medicineRepository.GetMedicinesByIds(medicines);
+            decimal totalWeight = _medicineRepository.GetMedicinesWeights(list);
+            if (totalWeight > drone.WeightLimit) // the drone isnt able to charge
+                return BadRequest(new JsonResult("The drone isn't abled to charge this weight"));
+
             drone = _droneRepository.ChargeMedicines(drone, list);
 
-            decimal medsWeight = drone.Medicines.Sum(m => m.Weight);
             JsonResult result = new JsonResult(drone);
             result.StatusCode = 200;
             return Ok(result);
