@@ -1,0 +1,113 @@
+commit 3b4b9b84d4963c92e37fa3f10a8359f87ba985f5
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Mon Jul 24 17:26:53 2023 +0200
+
+    Validating weigths on functionality to charge meds by ids
+
+commit 67b2c05d9e35b8c5dbe479836e318edccfbff920
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Mon Jul 24 15:14:20 2023 +0200
+
+    Functionality added to charge medicine by specific medicines id
+
+commit e3a08bebf843ea43e4fd1650a9c21e43a3017448
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Mon Jul 24 02:45:53 2023 +0200
+
+    A error fixed on create functions
+
+commit b554a29eab23af3f6e601bab57b37ed2158901d2
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Mon Jul 24 00:21:52 2023 +0200
+
+    GetDroneBySerieNumber created 'cause the filter in the controller was broking my test method
+
+commit 4fa7f4ab99f1ba6fb636c6a98ee64593f58c03cf
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sun Jul 23 22:14:57 2023 +0200
+
+    Some minor changes
+
+commit 9463ead69840afa7697efc6e0997c419a24cd334
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sun Jul 23 22:01:57 2023 +0200
+
+    Returns of actions changed
+
+commit eb805dd3a0a4c4aa7087733854e540e32d4a5325
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sun Jul 23 18:44:49 2023 +0200
+
+    Functionality added to create medicine
+
+commit ce90255e3d3908d927aeab14dacf15f4c28d1ca6
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sun Jul 23 18:31:40 2023 +0200
+
+    Added functionality to charge drone with medicine
+
+commit 350d18a08559b196c827fab72498656aee7679e4
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sun Jul 23 17:41:51 2023 +0200
+
+    Get some drone battery functionality added
+
+commit 6a848e7477ec711fbc3a16070ed215f31476e462
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sun Jul 23 05:45:53 2023 +0200
+
+    GetAbleDrones and CreateDrone functionalities finished
+
+commit 195a5351d4d239d9b3335eb9db0ce6372ed12af2
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sun Jul 23 05:16:11 2023 +0200
+
+    Mapper added and CREATE action created
+
+commit 3fdc23e69dec711a9fd7f494c4f9344248c86d29
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sat Jul 22 14:12:34 2023 +0200
+
+    Introducing DTOs, Interface and controllers
+
+commit f8a6a68279ec253d4a58d9471b36ec259de62b5d
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sat Jul 22 06:40:57 2023 +0200
+
+    Some fixes and first migration created
+
+commit a875a1dde70a7dfbb4623161ba0fc55d392f5b92
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sat Jul 22 06:12:36 2023 +0200
+
+    One to Many relation created
+
+commit c81ce1fe5006f68d24f9505154316893b905b7a8
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sat Jul 22 05:49:43 2023 +0200
+
+    Forgot to add Context
+
+commit 8e7e87057bba0e2b6c9e185f15624e073954875f
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sat Jul 22 05:45:29 2023 +0200
+
+    Adding ApplicationDBContext as actual context
+
+commit 25c2205f80e3c7a4f834642335d70cf6290c8d40
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sat Jul 22 05:39:29 2023 +0200
+
+    Creating connection string
+
+commit 3ca07199865e8b9600fdd60c65f558fc1878f387
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sat Jul 22 04:45:44 2023 +0200
+
+    Validations modified
+
+commit f550ab00da945d932cd7382cf6a3f1c64d839b8e
+Author: manuBGUser <parabitcoin97@gmail.com>
+Date:   Sat Jul 22 04:31:52 2023 +0200
+
+    First commit. Classes and types created
